@@ -1,48 +1,13 @@
 bob
 1234
 0
-Bought: 
-Selling: 
+Bought:1 2
+Selling:4 5 5
 
 tad
 1234
 0
 Bought: 
-Selling: 
+Selling:  
 
-may
-1234
-0
-Bought: 
-Selling: 
-
-tad 1234
-1234
-0
-Bought: 
-Selling: 
-
-td
-1234
-0
-Bought: 
-Selling: 
-
-td
-1223
-0
-Bought: 
-Selling: 
-
-td
-12
-0
-Bought: 
-Selling: 
-
-
-
-0
-Bought: 
-Selling: 
 
