@@ -25,7 +25,9 @@ public class CreateScreen {
             ListingIndex allListings = new ListingIndex();
 
             try {
-                allListings.createListing(name, description, price, user);
+                if (allListings.createListing(name, description, price, user).equals("Successfully Created")) {
+                    //TO DO: call back to user profile
+                };
             } catch (Exception e) {
                 System.out.println(e);
             }
