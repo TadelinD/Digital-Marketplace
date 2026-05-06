@@ -1,12 +1,12 @@
 bob
 1234
 0
-Bought:2
-Selling:
+Bought:
+Selling:1
 
 tad
 1234
-0
+100
 Bought: 
 Selling:
 
