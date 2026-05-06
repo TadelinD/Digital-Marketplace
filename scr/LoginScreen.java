@@ -65,8 +65,8 @@ public class LoginScreen{
                     line = reader.readLine();
                     String[] partsTwo= line.split(":");
                     if(parts[1] != " "){
-                        String[] listings = partsTwo[1].split(" ");
-                        for(String num:listings){
+                        String[] listingsTwo = partsTwo[1].split(" ");
+                        for(String num:listingsTwo){
                             myListings.add(num);
                         }
                     }
