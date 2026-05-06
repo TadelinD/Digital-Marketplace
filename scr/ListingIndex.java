@@ -211,4 +211,29 @@ public class ListingIndex{
 
         return "Sucessfully Created";
     }
+
+    public String editListing(String number, String name, String description, int price, User user) throws IOException {
+        //find number and rewrite line
+        Path path = Path.of("ListingData.txt");
+        List<String> listingLines = Files.readAllLines(path);
+        List<String> updatedLines = new ArrayList<>();
+        for (String line : listingLines) {
+            String [] current = line.split(",");
+            // detect line to change
+            // replace the correct line
+            if (current[0].equals(number)) {
+                String newLine = number + "," + name + "," + description + "," + price + "," + user.getUserName();
+                updatedLines.add(newLine);
+            } else {
+                updatedLines.add(line);
+            }
+        }
+
+        // overwrite file with updated content
+        Files.write(path, updatedLines);
+        return "Successfully Updated";
+    }
+
+    
+
 }
