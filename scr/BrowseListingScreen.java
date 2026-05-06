@@ -32,7 +32,8 @@ public class BrowseListingScreen {
         //choice options:
         Scanner scanner = new Scanner(System.in);
         while (true) { 
-            System.out.println("[#] Enter an ID number to view a listing      [C] Create a listing      [U] View your User Info");
+            System.out.println("[#] Enter an ID number to view a listing      [C] Create a listing");
+            System.out.println("[U] View your User Info       [X] Quit");
             String choice = scanner.nextLine().toLowerCase();
             if (choice.equals("c")) {
                 CreateScreen cScreen = new CreateScreen();
@@ -41,7 +42,11 @@ public class BrowseListingScreen {
 
             }
             else if (choice.equals("u")) {
-                //to do: go to user info
+                UserInfoScreen uiScreen = new UserInfoScreen();
+                uiScreen.showUserInfo(user);
+            }
+            else if (choice.equals("x")) {
+                System.exit(0);
             }
             else {
                 try {
