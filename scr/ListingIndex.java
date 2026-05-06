@@ -171,12 +171,12 @@ public class ListingIndex{
                 //remove from listing file
                 List<String> out = Files.lines(path).filter(line -> !line.equals(lineToRemove)).collect(Collectors.toList());
                 Files.write(path, out);
-                return "Successfully Deleted";
+                return "Successfully Purchased";
             }
         }
         getListInfoScanner.close();
 
-        return "Not Successfully Deleted";
+        return "Not Successfully Purchased";
     }
 
     //creating a listing for the user

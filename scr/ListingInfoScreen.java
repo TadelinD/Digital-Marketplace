@@ -33,7 +33,7 @@ public class ListingInfoScreen {
         //call purchase
         if (choice.equals("p") && !(info.get("owner")).equals(user.getUserName())) {
             try {
-                allListings.buyListing(number, user);
+                System.out.println(allListings.buyListing(number, user));
                 blScreen.openBrowseListing(user);
             } catch (Exception e) {
                 System.out.println(e);
