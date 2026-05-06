@@ -1,8 +1,8 @@
 bob
 1234
 0
-Bought:
-Selling:1
+Bought:2
+Selling:
 
 tad
 1234
