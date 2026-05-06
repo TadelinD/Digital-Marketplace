@@ -26,11 +26,31 @@ public class User{
         System.out.println(this.currency);
         System.out.println(this.myListings.toString());
         System.out.println(this.bought.toString());
+    }
 
+    public void addToBought(String item){
+        this.bought.add(item);
+
+    }
+
+    public List<String> getBought() {
+        return this.bought;
+    }
+
+    public List<String> getMyListings() {
+        return this.myListings;
     }
 
     public String getUserName() {
         return this.userName;
+    }
+
+    public String getPassword() {
+        return this.password;
+    }
+
+    public int getCurrency() {
+        return this.currency;
     }
 
     public void rmFromList(String listingid){
