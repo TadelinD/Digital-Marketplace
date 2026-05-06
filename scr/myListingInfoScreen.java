@@ -41,7 +41,6 @@ public class myListingInfoScreen {
             }
 
             else if (choice.equals("x")) {
-                //TO DO: delete option
                 try {
                     allListings.deleteListing(number, user);
                 } catch (Exception e) {
