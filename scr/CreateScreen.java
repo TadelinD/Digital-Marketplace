@@ -25,7 +25,7 @@ public class CreateScreen {
             try {
                 if (allListings.createListing(name, description, price, user).equals("Successfully Created")) {
                     System.out.println("\u001B[36m" + "============================================================" + "\u001B[0m");
-                    System.out.println("          Listing Successfully Created!");
+                    System.out.println("               Successfully Created");
                     BrowseListingScreen blScreen = new BrowseListingScreen();
                     blScreen.openBrowseListing(user);
                 };

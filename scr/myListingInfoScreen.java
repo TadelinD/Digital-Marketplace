@@ -34,6 +34,7 @@ public class myListingInfoScreen {
                 String newName = scanner.nextLine();
                 try {
                     allListings.editListing(number, newName, info.get("description"), Integer.parseInt(info.get("price")), user);
+                    System.out.println("Successfully Updated");
                     info.put("name", newName);
                 } catch (Exception e) {
                     System.out.println(e);
@@ -43,7 +44,7 @@ public class myListingInfoScreen {
 
             else if (choice.equals("x")) { //delete listing
                 try {
-                    allListings.deleteListing(number, user);
+                    System.out.println(allListings.deleteListing(number, user));
                     UserInfoScreen uiScreen = new UserInfoScreen();
                     uiScreen.showUserInfo(user);
                 } catch (Exception e) {
@@ -58,6 +59,7 @@ public class myListingInfoScreen {
                 try {
                     allListings.editListing(number, info.get("name"), newDesc, Integer.parseInt(info.get("price")), user);
                     info.put("description", newDesc);
+                    System.out.println("Successfully Updated");
                 } catch (Exception e) {
                     System.out.println(e);
                 }
@@ -69,6 +71,7 @@ public class myListingInfoScreen {
                 try {
                     allListings.editListing(number, info.get("name"), info.get("description"), newPrice, user);
                     info.put("price", Integer.toString(newPrice));
+                    System.out.println("Successfully Updated");
                 } catch (Exception e) {
                     System.out.println(e);
                 }
