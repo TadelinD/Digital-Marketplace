@@ -42,6 +42,11 @@ public class myListingInfoScreen {
 
             else if (choice.equals("x")) {
                 //TO DO: delete option
+                try {
+                    allListings.deleteListing(number, user);
+                } catch (Exception e) {
+                    System.out.println(e);
+                }
                 break;
             }
 
@@ -77,6 +82,7 @@ public class myListingInfoScreen {
     public static void main(String[] args) { //dont forget to remove!!!!!
         List<String> myListings = new ArrayList<>();
         List<String> bought = new ArrayList<>();
+        myListings.add("1");
         User u = new User("bob", "pass", 100, myListings, bought);
         myListingInfoScreen screen = new myListingInfoScreen();
         screen.showMyListingInfo("1", u);

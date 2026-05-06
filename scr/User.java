@@ -82,7 +82,7 @@ public class User{
                     lines.set(i + 4, "Selling:" + sellingString);
                 }
             }
-
+            
             System.out.println("Line replaced successfully.");
         } catch (IOException e) {
             System.out.println("An error occurred: " + e.getMessage());

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -234,6 +235,30 @@ public class ListingIndex{
         return "Successfully Updated";
     }
 
-    
+    public String deleteListing(String number, User user) throws IOException{
+        //remove number from user:
+        user.rmFromList(number);
+
+        //delete from listing file:
+        Path path = Path.of("ListingData.txt");
+        List<String> listingLines = Files.readAllLines(path);
+        List<String> updatedLines = new ArrayList<>();
+        String lineToRemove = null;
+        for (String line : listingLines) {
+            String[] current = line.split(",");
+            if (current[0].equals(number)) {
+                lineToRemove = line;
+                break;
+            }
+        }
+
+        final String finalLineToRemove = lineToRemove;
+        List<String> remainingLines = Files.lines(path).filter(line -> !line.equals(finalLineToRemove)).collect(Collectors.toList());
+        Files.write(path, remainingLines, StandardOpenOption.WRITE, StandardOpenOption.TRUNCATE_EXISTING);
+
+        return "Successfully Deleted";
+    }
+
+
 
 }
