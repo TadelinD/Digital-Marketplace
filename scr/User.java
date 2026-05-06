@@ -1,12 +1,7 @@
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
 
 public class User{
@@ -32,6 +27,10 @@ public class User{
         System.out.println(this.myListings.toString());
         System.out.println(this.bought.toString());
 
+    }
+
+    public String getUserName() {
+        return this.userName;
     }
 
     public void rmFromList(String listingid){
