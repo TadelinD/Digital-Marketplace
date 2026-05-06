@@ -1,7 +1,6 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class UserInfoScreen{
@@ -56,6 +55,8 @@ public class UserInfoScreen{
         
             if(choice.equals("b")){
                 //go back to browsing
+                BrowseListingScreen blScreen = new BrowseListingScreen();
+                blScreen.openBrowseListing(u);
                 break;
             }
             else{
@@ -69,8 +70,8 @@ public class UserInfoScreen{
 
                 if(isNum){
                     if(myListings.contains(choice)){
-                        myListingInfoScreen mliScreen = new myListingInfoScreen();
-                        mliScreen.showMyListingInfo(choice, u);
+                        myListingInfoScreen mlScreen = new myListingInfoScreen();
+                        mlScreen.showMyListingInfo(choice, u);
                     }
                     else{
                         System.out.println("Invalid option");
@@ -84,18 +85,4 @@ public class UserInfoScreen{
         }
         
     }
-    public static void main(String[] args) { //dont forget to remove!!!!!
-        List<String> myListings = new ArrayList<>();
-        List<String> bought = new ArrayList<>();
-        
-        myListings.add("1");
-        myListings.add("4");
-        bought.add("2");
-        bought.add("3");
-        
-        User u = new User("bob", "pass", 100, myListings, bought);
-        UserInfoScreen screen = new UserInfoScreen();
-        screen.showUserInfo(u);
-    }
-
 }

@@ -24,7 +24,8 @@ public class myListingInfoScreen {
             String choice = scanner.nextLine().toLowerCase();
 
             if (choice.equals("b")) {
-                //TO DO: go back to user profile
+                UserInfoScreen uiScreen = new UserInfoScreen();
+                uiScreen.showUserInfo(user);
                 break;
             }
 
@@ -40,9 +41,11 @@ public class myListingInfoScreen {
                 System.out.println("Name changed to: " + newName);
             }
 
-            else if (choice.equals("x")) {
+            else if (choice.equals("x")) { //delete listing
                 try {
                     allListings.deleteListing(number, user);
+                    UserInfoScreen uiScreen = new UserInfoScreen();
+                    uiScreen.showUserInfo(user);
                 } catch (Exception e) {
                     System.out.println(e);
                 }

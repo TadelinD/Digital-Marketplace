@@ -62,6 +62,9 @@ public class ListingIndex{
                 //deduce price
                 user.deductAmount(Integer.parseInt(info[3]));
 
+                //remember to add to bought list here ->
+                user.addToBought(listingId);
+
                 Path userPath = Paths.get("UserData.txt");
                 List<String> lines = Files.readAllLines(userPath);
                 List<String> updatedLines = new ArrayList<>();
