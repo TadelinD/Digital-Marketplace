@@ -1,3 +1,5 @@
-1
+5
 0,item name,description,price,owner
-1,item2,a,3,bob
+1,item2,a,3,tad
+4,asasd,asdasd,1,bob
+5,asdasd,asdasd,1,bob

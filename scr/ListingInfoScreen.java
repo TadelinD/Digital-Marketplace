@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -23,29 +21,31 @@ public class ListingInfoScreen {
         System.out.println("\u001B[36m" + "==============================" + "\u001B[0m");
         System.out.println();
         Scanner choiceScanner = new Scanner(System.in);
-        String choice = choiceScanner .nextLine();
+        String choice = choiceScanner .nextLine().toLowerCase();
 
         //call back:
         //to do:
+        BrowseListingScreen blScreen = new BrowseListingScreen();
+        if (choice.equals("b")) {
+            blScreen.openBrowseListing(user);
+        }
 
         //call purchase
-        if (choice.equals("p")) {
+        if (choice.equals("p") && !(info.get("owner")).equals(user.getUserName())) {
             try {
                 allListings.buyListing(number, user);
+                blScreen.openBrowseListing(user);
             } catch (Exception e) {
                 System.out.println(e);
             }
             
         }
+        else if ((info.get("owner")).equals(user.getUserName())) {
+            System.out.println("You can't buy that!");
+            blScreen.openBrowseListing(user);
+        }
         
         choiceScanner.close();
         System.out.println();
-    }
-    public static void main(String[] args) { //dont forget to remove!!!!!
-        //for testing purposes
-        List<String> myListings = new ArrayList<>();
-        List<String> bought = new ArrayList<>();
-        User u = new User("tad", "pass", 100, myListings, bought);
-        showListingInfo("1", u);
     }
 }
