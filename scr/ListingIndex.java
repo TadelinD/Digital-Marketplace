@@ -50,6 +50,7 @@ public class ListingIndex{
         Path path = Paths.get("ListingData.txt");
         Scanner getListInfoScanner = new Scanner(myFile);
         String [] info;
+        String ownerOfItem = null;
         String latestUniqueID = getListInfoScanner.nextLine();
         while (getListInfoScanner.hasNextLine()) {
             String data = getListInfoScanner.nextLine();
@@ -57,6 +58,7 @@ public class ListingIndex{
             // Parse line here (e.g., data.split(","))
             info = data.split(",");
             if (info[0].equals(listingId)) {
+                ownerOfItem = info[4];
                 //deduce price
                 user.deductAmount(Integer.parseInt(info[3]));
 
@@ -145,15 +147,33 @@ public class ListingIndex{
                 }
                 Files.write(userPath, boughtLines);
                 //-------------------------------------------------------------------------------------
+                lines = Files.readAllLines(userPath);
+                for (int i = 0; i < lines.size(); i++) {
+                    if (lines.get(i).equals(ownerOfItem)) {
+                        
+                        // current money
+                        int currentMoney = Integer.parseInt(lines.get(i + 2).trim());
+
+                        // add price
+                        int newMoney = currentMoney + Integer.parseInt(info[3]); // price
+
+                        // update line
+                        lines.set(i + 2, String.valueOf(newMoney));
+
+                        break;
+                    }
+                }
+
+                Files.write(userPath, lines);
                 //remove from listing file
                 List<String> out = Files.lines(path).filter(line -> !line.equals(lineToRemove)).collect(Collectors.toList());
                 Files.write(path, out);
-                return "Sucessfully Deleted";
+                return "Successfully Deleted";
             }
         }
         getListInfoScanner.close();
 
-        return "Not Sucessfully Deleted";
+        return "Not Successfully Deleted";
     }
 
     //creating a listing for the user
@@ -210,7 +230,7 @@ public class ListingIndex{
             //add to user object:
             user.addToList(Integer.toString(newID));
 
-        return "Sucessfully Created";
+        return "Successfully Created";
     }
 
     public String editListing(String number, String name, String description, int price, User user) throws IOException {

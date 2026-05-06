@@ -45,7 +45,7 @@ public class ListingInfoScreen {
         //for testing purposes
         List<String> myListings = new ArrayList<>();
         List<String> bought = new ArrayList<>();
-        User u = new User("bob", "pass", 100, myListings, bought);
+        User u = new User("tad", "pass", 100, myListings, bought);
         showListingInfo("1", u);
     }
 }
