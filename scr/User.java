@@ -1,7 +1,10 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 public class User{
@@ -22,11 +25,25 @@ public class User{
 
     }
 
-    public void getUserInfo(){
-        System.out.println(this.currency);
-        System.out.println(this.myListings.toString());
-        System.out.println(this.bought.toString());
+    public List<Object> getUserInfo(){
+        List<Object> userInfo = new ArrayList<>();
+        userInfo.add(userName);
+        userInfo.add(password);
+        userInfo.add(currency);
+        return userInfo;
+    }
 
+    public void addToBought(String item){
+        this.bought.add(item);
+
+    }
+
+    public List<String> getBought() {
+        return this.bought;
+    }
+
+    public List<String> getMyListings() {
+        return this.myListings;
     }
 
     public String getUserName() {
