@@ -26,6 +26,7 @@ public class ListingInfoScreen {
         String choice = choiceScanner .nextLine();
 
         //call back:
+        //to do:
 
         //call purchase
         if (choice.equals("p")) {
@@ -40,7 +41,7 @@ public class ListingInfoScreen {
         choiceScanner.close();
         System.out.println();
     }
-    public static void main(String[] args) {
+    public static void main(String[] args) { //dont forget to remove!!!!!
         //for testing purposes
         List<String> myListings = new ArrayList<>();
         List<String> bought = new ArrayList<>();

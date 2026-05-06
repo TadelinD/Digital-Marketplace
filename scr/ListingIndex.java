@@ -154,4 +154,61 @@ public class ListingIndex{
 
         return "Not Sucessfully Deleted";
     }
+
+    //creating a listing for the user
+    public String createListing(String name, String description, int price, User user) throws IOException {
+        //add to list of listings txt first:
+        Path path = Path.of("ListingData.txt");
+        List<String> listingLines = Files.readAllLines(path);
+        int latestUniqueID = Integer.parseInt(listingLines.get(0).trim());
+        int newID = latestUniqueID + 1;
+        listingLines.set(0, String.valueOf(newID));
+        String newListing = newID + "," + name + "," + description + "," + price + "," + user.getUserName();
+        listingLines.add(newListing);
+        Files.write(path, listingLines);
+
+        //change user data txt:
+        Path userPath = Paths.get("UserData.txt");
+        List<String> lines = Files.readAllLines(userPath);
+        boolean correctUser = false;
+        List<String> sellingLines = new ArrayList<>();
+            for (String line : lines) {
+                // detect user
+                if (line.equals(user.getUserName())) {
+                    correctUser = true;
+                    sellingLines.add(line);
+                    continue;
+                }
+
+                // stop when next user starts (empty line resets block)
+                if (line.trim().isEmpty()) {
+                    correctUser = false;
+                    sellingLines.add(line);
+                    continue;
+                }
+
+                //modify bought line:
+                if (correctUser && line.startsWith("Selling:")) {
+                    String sellingtData = line.substring(8).trim(); // remove "Bought:"
+                    
+                    if (sellingtData.isEmpty()) {
+                        // no items yet
+                        line = "Selling:" + newID;
+                    } else {
+                        // append new item
+                        line = "Selling:" + sellingtData + " " + newID;
+                    }
+
+                    sellingLines.add(line);
+                } else {
+                    sellingLines.add(line);
+                }
+            }
+            Files.write(userPath,sellingLines);
+
+            //add to user object:
+            user.addToList(Integer.toString(newID));
+
+        return "Sucessfully Created";
+    }
 }
