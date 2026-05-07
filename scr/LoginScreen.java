@@ -10,34 +10,62 @@ import java.util.Scanner;
 public class LoginScreen{
 
     public void showLogin(){
-        System.out.println("=======================");
-        System.out.println("Login");
-        System.out.println("=======================");
+        System.out.println("\u001B[36m" + "============================================================" + "\u001B[0m");
+        System.out.println("\u001B[33m" + "                       LOG IN" + "\u001B[0m");
+        System.out.println("\u001B[36m" + "============================================================" + "\u001B[0m");
         System.out.println();
         System.out.println("Please enter the following:");
         
         
-        System.out.print("Username:");
-        String userName =  Main.scanner.nextLine();
+        
+        boolean exists = false;
         String StoredPW = "";
+        String userName = "";
 
-        try (BufferedReader reader = new BufferedReader(new FileReader("UserData.txt"))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                if(line.equals(userName)){
-                    StoredPW = reader.readLine();
-                }  
+        while(!exists){
+            System.out.print("Username:");
+            userName =  Main.scanner.nextLine();
+            try (BufferedReader reader = new BufferedReader(new FileReader("UserData.txt"))) {
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    if(line.equals(userName)){
+                        StoredPW = reader.readLine();
+                        exists = true;
+                    }  
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        } catch (IOException e) {
-            e.printStackTrace();
+
+            if(!exists){
+                System.out.println();
+                System.out.println("User does not exist.");
+                System.out.println("Please enter valid username.");
+                System.out.println();
+            }
         }
 
-        System.out.print("PassWord:");
-        String password =  Main.scanner.nextLine();
-        if(password.equals(StoredPW)){
-            System.out.println("Success");
-            startSession(userName);
+        boolean checkPass = false;
+
+        while(!checkPass){
+            System.out.print("PassWord:");
+            String password =  Main.scanner.nextLine();
+            if(password.equals(StoredPW)){
+                System.out.println("Logging in ...");
+                System.out.println();
+                startSession(userName);
+                checkPass = true;
+            }
+            else{
+                System.out.println();
+                System.out.println("Incorrect Password");
+                System.out.println("Please type in correct password.");
+                System.out.println();
+
+            }
+
         }
+        
     }
 
     public void startSession(String userName){
@@ -55,7 +83,8 @@ public class LoginScreen{
 
                     line = reader.readLine();
                     String[] parts= line.split(":");
-                    if(parts[1] != " "){
+                    System.out.println(parts.toString());
+                    if(parts.length > 1){
                         String[] listings = parts[1].split(" ");
                         for(String num:listings){
                             bought.add(num);
@@ -64,7 +93,7 @@ public class LoginScreen{
 
                     line = reader.readLine();
                     String[] partsTwo= line.split(":");
-                    if(parts[1] != " "){
+                    if(partsTwo.length > 1){
                         String[] listingsTwo = partsTwo[1].split(" ");
                         for(String num:listingsTwo){
                             myListings.add(num);
@@ -72,6 +101,8 @@ public class LoginScreen{
                     }
 
                     User u = new User(userName, StoredPW, currency, myListings, bought);
+                    BrowseListingScreen blScreen = new BrowseListingScreen();
+                    blScreen.openBrowseListing(u);
                     
                 }  
             }

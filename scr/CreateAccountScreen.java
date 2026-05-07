@@ -9,9 +9,9 @@ public class CreateAccountScreen{
 
     public void showCreateAccount(){
         //Scanner Cscanner = new Scanner(System.in);
-        System.out.println("=======================");
-        System.out.println("Create Account Screen");
-        System.out.println("=======================");
+        System.out.println("\u001B[36m" + "============================================================" + "\u001B[0m");
+        System.out.println("\u001B[33m" + "                       Create Account" + "\u001B[0m");
+        System.out.println("\u001B[36m" + "============================================================" + "\u001B[0m");
         System.out.println();
         System.out.println("Please enter the following:");
         
