@@ -14,7 +14,7 @@ The benefit of creating this program is to be able to simulate a system that is 
 
 Special Requirements:
 
-	All screens are displayed on the command line, and all user input is gathered by using 
+All screens are displayed on the command line, and all user input is gathered by using 
 Scanners. In order to keep track of User and Listing information and updates, all data in 
 The digital marketplace is stored using two txt files, UserData.txt and ListingData.txt. 
 After creating an account, buying a listing, creating a listing, or updating anything else on 
