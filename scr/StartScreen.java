@@ -4,28 +4,42 @@ public class StartScreen{
 
 
     public void open(){
-        //Scanner scanner = new Scanner(System.in);
-        System.out.println("\nHello Welcome to the \nDigital MarketPlace");
+        System.out.println("\u001B[36m" + "============================================================" + "\u001B[0m");
+        System.out.println("\u001B[33m" + "        WELCOME TO THE DIGITAL MARKETPLACE" + "\u001B[0m");
+        System.out.println("\u001B[36m" + "============================================================" + "\u001B[0m");
         System.out.println("\nChoose one of the following options:");
         System.out.println();
-        System.out.println("(1) Create an Account");
-        System.out.println("(2) Log in");
-        System.out.println("(3) Quit");
+        System.out.println("[1] Create an Account");
+        System.out.println("[2] Log in");
+        System.out.println("[3] Quit");
         System.out.println();
-        System.out.println("Enter:");
 
-        int choice = Main.scanner.nextInt();
-        Main.scanner.nextLine();
         
-        if(choice == 1){
-            openCreateAccount();
+
+        while(true){
+            System.out.println("Enter:");
+            int choice = Main.scanner.nextInt();
+            Main.scanner.nextLine();
+
+            if(choice == 1){
+                openCreateAccount();
+                break;
+            }
+            else if(choice == 2){
+                openLogin();
+                break;
+            }
+            else if(choice == 3){
+                System.out.println("Quitting...");
+                break;
+            }
+            else{
+                System.out.println();
+                System.out.println("Invalid option");
+                System.out.println();
+            }
         }
-        else if(choice == 2){
-            openLogin();;
-        }
-        else{
-            System.out.println("Quitting...");
-        }
+        
 
     }
 
