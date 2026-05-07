@@ -267,8 +267,10 @@ public class ListingIndex{
         List<String> listingLines = Files.readAllLines(path);
         List<String> updatedLines = new ArrayList<>();
         String lineToRemove = null;
-        for (String line : listingLines) {
+        for (int i = 1; i < listingLines.size(); i++) { // start at 1, not 0
+            String line = listingLines.get(i);
             String[] current = line.split(",");
+
             if (current[0].equals(number)) {
                 lineToRemove = line;
                 break;
