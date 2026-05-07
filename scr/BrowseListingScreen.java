@@ -62,13 +62,4 @@ public class BrowseListingScreen {
             
         }
     }
-
-     public static void main(String[] args) { //dont forget to remove!!!!!
-        List<String> myListings = new ArrayList<>();
-        List<String> bought = new ArrayList<>();
-        myListings.add("4");
-        User u = new User("bob", "pass", 100, myListings, bought);
-        BrowseListingScreen blScreen = new BrowseListingScreen();
-        blScreen.openBrowseListing(u);
-    }
 }
