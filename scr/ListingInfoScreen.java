@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class ListingInfoScreen {
 
-    public static void showListingInfo(String number, User user) {
+    public void showListingInfo(String number, User user) {
         ListingIndex allListings = new ListingIndex();
         Map<String, String> info = allListings.getListInfo(number);
         System.out.println();
